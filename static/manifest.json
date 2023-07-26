@@ -1,0 +1,20 @@
+{
+  "name": "Drift Devil's Auto",
+  "short_name": "DDA",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#767676",
+  "icons": [
+    {
+      "sizes": "192x192",
+      "src": "icon192.png",
+      "type": "image/png"
+    },
+    {
+      "sizes": "512x512",
+      "src": "icon512.png",
+      "type": "image/png"
+    }
+  ]
+}
