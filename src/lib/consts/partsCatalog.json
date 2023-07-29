@@ -55,7 +55,7 @@
   },
   "tools": [
     { "id": "re1", "name": "Car Parts", "cost": 25 },
-    { "id": "re2", "name": "Advanced Car Parts", "cost": 200 },
+    { "id": "re2", "name": "Advanced Car Parts", "cost": 300 },
     { "id": "re3", "name": "Mechanic Tools", "cost": 500 },
     { "id": "re4", "name": "Toolbox", "cost": 500 },
     { "id": "re5", "name": "Duct Tape", "cost": 100 },

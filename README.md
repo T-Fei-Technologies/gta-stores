@@ -1,6 +1,6 @@
 # gta-dda
 
-## Drift Devil's Auto
+## Drift Devil Auto
 
 Live at: https://gta-dda.vercel.app/
 
@@ -22,10 +22,10 @@ This readme is pretty informal as this wasn't meant to be some complex project, 
 
 ### Tech Info
 Here is the tech I used at-a-glance
-- Svelte 3.54 / SvelteKit 1.5.0
+- Svelte 4.1.1 / SvelteKit 1.22.3
 - Typescript 5.0.0
-- TailwindCSS 3.3.2
-- DaisyUI 3.0.0
+- TailwindCSS 3.3.3
+- DaisyUI 3.5.0
 - Svelte Hero Icons 5.0.0
 - Theme Change 2.5.0
 - Workbox-precaching 7.0.0 (for PWA/Offline support)
