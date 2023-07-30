@@ -1,7 +1,7 @@
 <script>
-  import { appSettings } from '$lib/stores/appSettings.ts';
-  import { saveSettings } from '$lib/appSettings/settingsHelpers.ts';
-  import { PART_CATEGORIES } from '$lib/types/PartCategories.ts';
+  import { appSettings } from '$lib/stores/appSettings';
+  import { saveSettings } from '$lib/appSettings/settingsHelpers';
+  import { PART_CATEGORIES } from '$lib/types/PartCategories';
 </script>
 
 <div class="mb-4">
@@ -16,11 +16,11 @@
         <input
           type="number"
           id={`${category}-markup`}
-          class="input input-bordered w-24 text-center"
+          class="input input-bordered rounded-lg w-24 text-center"
           value={$appSettings.markup[category]}
-          on:keyup={(event) => {
-            $appSettings.markup.cosmetics = event.target.value;
-            saveSettings();
+          on:keyup={async (event) => {
+            $appSettings.markup[category] = Number(event.target?.value);
+            await saveSettings();
           }}
         />
       </div>

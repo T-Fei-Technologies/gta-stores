@@ -1,0 +1,76 @@
+{
+  "markup": {
+    "cosmetics": 10,
+    "performance": 20,
+    "tools": 0
+  },
+  "partsCatalog": {
+    "cosmetics": [
+      { "id": "co1", "name": "Drift Smoke Tires", "cost": 200 },
+      { "id": "co2", "name": "Vehicle Hood", "cost": 550 },
+      { "id": "co3", "name": "Vehicle Roof", "cost": 700 },
+      { "id": "co4", "name": "Vehicle Spoiler", "cost": 2500 },
+      { "id": "co5", "name": "Vehicle Bumper", "cost": 1000 },
+      { "id": "co6", "name": "Vehicle Skirts", "cost": 1000 },
+      { "id": "co7", "name": "Vehicle Exhaust", "cost": 800 },
+      { "id": "co8", "name": "Seat Cosmetics", "cost": 200 },
+      { "id": "co9", "name": "Livery Roll", "cost": 2200 },
+      { "id": "co10", "name": "Custom Horn", "cost": 250 },
+      { "id": "co11", "name": "Internal Cosmetics", "cost": 250 },
+      { "id": "co12", "name": "Exterior Cosmetics", "cost": 250 },
+      { "id": "co13", "name": "Customized Plates", "cost": 600 },
+      { "id": "co14", "name": "Xenon Headlights", "cost": 1000 },
+      { "id": "co15", "name": "Custom Wheel Rims", "cost": 250 },
+      { "id": "co16", "name": "Roll Cage", "cost": 250 },
+      { "id": "co17", "name": "NOS Color Injector", "cost": 3000 },
+      { "id": "co19", "name": "NOS Refill", "cost": 1500 },
+      { "id": "co20", "name": "Spare Tire", "cost": 200 },
+      { "id": "co21", "name": "Vehicle Spray Can", "cost": 550 },
+      { "id": "co22", "name": "Tint Supplies", "cost": 1000 }
+    ],
+    "performance": {
+      "engine": [
+        { "id": "peen1", "name":  "Tier 1 Engine", "cost":  2000 },
+        { "id": "peen2", "name":  "Tier 2 Engine", "cost":  4000 },
+        { "id": "peen3", "name":  "Tier 3 Engine", "cost":  8000 },
+        { "id": "peen4", "name":  "Tier 4 Engine", "cost":  16000 },
+        { "id": "peen5", "name":  "Tier 5 Engine", "cost":  25000 }
+      ],
+      "transmission": [
+          { "id": "petr1", "name":  "Tier 1 Transmission", "cost":  2000 },
+          { "id": "petr2", "name":  "Tier 2 Transmission", "cost":  4000 },
+          { "id": "petr3", "name":  "Tier 3 Transmission", "cost":  8000 },
+          { "id": "petr4", "name":  "Tier 4 Transmission", "cost":  16000 }
+      ],
+      "brakes": [
+          { "id": "pebr1", "name":  "Tier 1 Brakes", "cost":  4000 },
+          { "id": "pebr2", "name":  "Tier 2 Brakes", "cost":  8000 },
+          { "id": "pebr3", "name":  "Tier 3 Brakes", "cost":  16000 }
+      ],
+      "suspension": [
+          { "id": "pesu1", "name":  "Tier 1 Suspension", "cost":  1000 },
+          { "id": "pesu2", "name":  "Tier 2 Suspension", "cost":  3000 },
+          { "id": "pesu3", "name":  "Tier 3 Suspension", "cost":  5000 },
+          { "id": "pesu4", "name":  "Tier 4 Suspension", "cost":  7000 },
+          { "id": "pesu5", "name":  "Tier 5 Suspension", "cost":  9000 }
+      ],
+      "other": [
+        { "id": "peot1", "name": "Supercharger Turbo", "cost": 15000 },
+        { "id": "peot2", "name": "Drift Tires", "cost": 2500 }
+      ]
+    },
+    "tools": [
+      { "id": "re1", "name": "Car Parts", "cost": 25 },
+      { "id": "re2", "name": "Advanced Car Parts", "cost": 300 },
+      { "id": "re3", "name": "Mechanic Tools", "cost": 500 },
+      { "id": "re4", "name": "Toolbox", "cost": 500 },
+      { "id": "re5", "name": "Duct Tape", "cost": 100 },
+      { "id": "re6", "name": "Neon Controller", "cost": 2500 },
+      { "id": "re7", "name": "Cleaning Kit", "cost": 50 },
+      { "id": "re8", "name": "Power Saw", "cost": 500 },
+      { "id": "re9", "name": "Saw Blade", "cost": 100 },
+      { "id": "re10", "name": "Screwdriver", "cost": 50 },
+      { "id": "re11", "name": "Tow", "cost": 750}
+    ]
+  }
+}

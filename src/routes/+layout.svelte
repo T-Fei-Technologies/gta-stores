@@ -9,9 +9,9 @@
 	import Settings from '$lib/components/Settings/Settings.svelte';
 	import Changelog from '$lib/components/Changelog/Changelog.svelte';
 
-	onMount(() => {
+	onMount(async () => {
 		// Load settings from local storage
-		loadSettings();
+		await loadSettings();
 
 		// Grab the theme from the URL
 		const urlParams = new URLSearchParams(window.location.search);

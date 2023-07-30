@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
-  import { appSettings } from '$lib/stores/appSettings.ts';
-  import { PART_CATEGORIES } from '$lib/types/PartCategories.ts';
+  import { appSettings } from '$lib/stores/appSettings';
+  import { PART_CATEGORIES } from '$lib/types/PartCategories';
   import type { Part } from '$lib/types/Part';
   import PartsPriceListItem from '$lib/components/Settings/PartsPriceListItem.svelte';
   import PartsCategoryTabs from '$lib/components/PartsCatalog/PartsCategoryTabs.svelte';
@@ -17,7 +17,7 @@
   const onItemChange = (
     type: PART_CATEGORIES,
     subtype?: string,
-  ) => (part: Part, propToChange: keyof Part, value: string | number) => {
+  ) => async (part: Part, propToChange: keyof Part, value: string | number) => {
     if (type === PART_CATEGORIES.PERFORMANCE) {
       const partIndex = $appSettings.partsCatalog[type][subtype].findIndex((p) => p.id === part.id);
       $appSettings.partsCatalog[type][subtype][partIndex][propToChange] = value !== '' ? value : undefined;
@@ -27,7 +27,7 @@
     }
 
     appSettings.set($appSettings);
-    saveSettings();
+    await saveSettings();
   };
 
   const onConfirmItemDelete = (
@@ -46,38 +46,45 @@
     }, 250);
   };
 
-  const onDeleteItem = () => {
+  const onDeleteItem = async () => {
+    if (!partToDelete) {
+      return;
+    }
+
     // Remove the item from the worksheet if it's there
     $items = $items.filter((item) => item.partId !== partToDelete?.part.id);
 
     // Now remove it from the parts catalog
-    if (partToDelete?.type === PART_CATEGORIES.PERFORMANCE) {
-      $appSettings.partsCatalog.performance[partToDelete?.subtype] = $appSettings.partsCatalog.performance[partToDelete?.subtype]
-        .filter((p) => p.id !== partToDelete?.part.id);
-    } else {
-      $appSettings.partsCatalog[partToDelete?.type] = $appSettings.partsCatalog[partToDelete?.type]
-        .filter((p) => p.id !== partToDelete?.part.id);
+    if (partToDelete.type === PART_CATEGORIES.PERFORMANCE && partToDelete.subtype) {
+      $appSettings.partsCatalog.performance[partToDelete.subtype] = $appSettings.partsCatalog.performance[partToDelete.subtype]
+        .filter((part: Part) => part.id !== partToDelete?.part.id);
+    }
+
+    if (partToDelete.type !== PART_CATEGORIES.PERFORMANCE) {
+      $appSettings.partsCatalog[partToDelete.type] = $appSettings.partsCatalog[partToDelete?.type]
+        .filter((part: Part) => part.id !== partToDelete?.part.id);
     }
 
     // Update and save the app settings, then close the modal
     appSettings.set($appSettings);
-    saveSettings();
+    await saveSettings();
     onDeletePartModalClose();
   }
 
-  const onAddPart = (type: PART_CATEGORIES, subtype?: string) => (part: Part) => {
+  const onAddPart = (type: PART_CATEGORIES, subtype?: string) => async (part: Part) => {
     // Generate a pseudo-random ID for the part plus the name minus any spaces
     part.id = Math.random().toString(36).slice(2, 9) + part.name.replace(/\s/g, '');
 
     partToAdd = part;
 
-    if (type === PART_CATEGORIES.PERFORMANCE) {
+    if (type === PART_CATEGORIES.PERFORMANCE && subtype) {
       $appSettings.partsCatalog.performance[subtype].push(part);
-    } else {
+    }
+    if (type !== PART_CATEGORIES.PERFORMANCE) {
       $appSettings.partsCatalog[type].push(part);
     }
     appSettings.set($appSettings);
-    saveSettings();
+    await saveSettings();
 
     setTimeout(() => {
       partToAdd = undefined;
@@ -107,14 +114,14 @@
                     <PartsPriceListItem
                       part={part}
                       index={i}
-                      onItemChange={onItemChange(activeTab, subtype)}
+                      onItemChange={async () => onItemChange(activeTab, subtype)}
                       onItemDelete={onConfirmItemDelete(part, activeTab, subtype)}
                       isBeingAdded={partToAdd?.id === part.id}
                       isBeingDeleted={partToDelete?.part.id === part.id}
                     />
                   {/each}
                   <NewPartListItem
-                    onAddPart={onAddPart(activeTab, subtype)}
+                    onAddPart={async () => onAddPart(activeTab, subtype)}
                     index={$appSettings.partsCatalog.performance[subtype].length}
                   />
                 </div>
@@ -128,13 +135,16 @@
             <PartsPriceListItem
               part={part}
               index={i}
-              onItemChange={onItemChange(activeTab)}
+              onItemChange={async () => onItemChange(activeTab)}
               onItemDelete={onConfirmItemDelete(part, activeTab)}
               isBeingAdded={partToAdd?.id === part.id}
               isBeingDeleted={partToDelete?.part.id === part.id}
             />
           {/each}
-          <NewPartListItem onAddPart={onAddPart(activeTab)} index={$appSettings.partsCatalog[activeTab].length} />
+          <NewPartListItem
+            onAddPart={async () => onAddPart(activeTab)}
+            index={$appSettings.partsCatalog[activeTab].length}
+          />
         </div>
       {/if}
     </div>
@@ -149,7 +159,7 @@
     <p class="font-bold text-warning">There's no going back from this!</p>
     <div class="modal-action">
       <!-- if there is a button in form, it will close the modal -->
-      <button type="button" class="btn btn-error" on:click={onDeleteItem}>Yes</button>
+      <button type="button" class="btn btn-error" on:click={async () => onDeleteItem}>Yes</button>
       <button class="btn" on:click={onDeletePartModalClose}>No</button>
     </div>
   </form>
