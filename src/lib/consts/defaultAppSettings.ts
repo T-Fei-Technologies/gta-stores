@@ -1,5 +1,3 @@
-import partsCatalog from '$lib/consts/partsCatalog.json';
-
 export const defaultAppSettings = {
   markup: {
     cosmetics: 10,
@@ -7,5 +5,9 @@ export const defaultAppSettings = {
     tools: 0,
   },
   discount: 0,
-  partsCatalog: partsCatalog,
+  partsCatalog: {
+    cosmetics: [],
+    performance: {},
+    tools: [],
+  },
 };

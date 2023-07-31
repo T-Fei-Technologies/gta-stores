@@ -1,6 +1,6 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
-  import { items } from '$lib/stores/items.ts';
+  import { items } from '$lib/stores/items';
   import { appSettings } from '$lib/stores/appSettings';
   import PartsCategoryTabs from '$lib/components/PartsCatalog/PartsCategoryTabs.svelte';
   import PartListItem from '$lib/components/PartsCatalog/PartListItem.svelte';

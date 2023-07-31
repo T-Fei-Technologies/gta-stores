@@ -9,9 +9,9 @@
 	import Settings from '$lib/components/Settings/Settings.svelte';
 	import Changelog from '$lib/components/Changelog/Changelog.svelte';
 
-	onMount(() => {
+	onMount(async () => {
 		// Load settings from local storage
-		loadSettings();
+		await loadSettings();
 
 		// Grab the theme from the URL
 		const urlParams = new URLSearchParams(window.location.search);
@@ -26,7 +26,7 @@
 	});
 </script>
 
-<div class="flex flex-col min-h-screen bg-base text-base-content" data-theme={$theme.daisyUITheme}>
+<div class="flex flex-col min-h-screen bg-secondary text-secondary-content" data-theme={$theme.daisyUITheme}>
 	<Header />
 
 	<main class="flex items-center justify-center flex-grow p-4 w-full max-w-5xl mx-auto">

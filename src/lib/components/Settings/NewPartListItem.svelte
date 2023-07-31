@@ -56,7 +56,7 @@
         bind:value={part.name}
         tabindex={index + 1}
         placeholder="Awesome Part Name"
-        on:keyup={clearAddAttempted}
+        on:input={clearAddAttempted}
       />
     </div>
 
@@ -74,7 +74,7 @@
         class:input-error={addAttempted && part.cost < 0}
         title="The price of the part/item"
         bind:value={part.cost}
-        on:keyup={clearAddAttempted}
+        on:input={clearAddAttempted}
         min="0"
         tabindex={index + 1}
       />
@@ -91,6 +91,7 @@
         class="input input-bordered rounded-lg w-full text-left px-4 flex-grow"
         title="Notes about the part/item"
         bind:value={part.notes}
+        on:input={clearAddAttempted}
         tabindex={index + 1}
       />
     </div>

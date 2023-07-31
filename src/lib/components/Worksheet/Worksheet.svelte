@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fly, fade } from 'svelte/transition';
   import { Icon, Trash } from 'svelte-hero-icons';
-  import { items } from '$lib/stores/items.ts';
+  import { items } from '$lib/stores/items';
   import { cubicOut } from 'svelte/easing';
   import WorkSheetListItem from '$lib/components/Worksheet/WorkSheetListItem.svelte';
   import WorkSheetTotals from '$lib/components/Worksheet/WorkSheetTotals.svelte';

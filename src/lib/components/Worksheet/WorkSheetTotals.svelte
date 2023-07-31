@@ -1,14 +1,14 @@
 <script lang="ts">
-  import { priceFormatter } from '$lib/utils/priceFormatter.ts';
-  import { items } from '$lib/stores/items.ts';
+  import { priceFormatter } from '$lib/utils/priceFormatter';
+  import { items } from '$lib/stores/items';
   import { appSettings } from '$lib/stores/appSettings';
-  import { saveSettings } from '$lib/appSettings/settingsHelpers';
+  import { saveAppSettings } from '$lib/appSettings/settingsHelpers';
   import { PART_CATEGORIES } from '$lib/types/PartCategories';
   import { getPartById } from '$lib/utils/getPartById';
 
   const applyDiscount = (event: Event) => {
     $appSettings.discount = Math.max(Math.min(Number(event.target.value), 100), 0);
-    saveSettings();
+    saveAppSettings();
   };
 
   $: getItemCost = (partId: string): number => {
@@ -72,8 +72,7 @@
         id="discount"
         class="input input-bordered rounded-lg w-20 text-right"
         value={$appSettings.discount}
-        on:keyup={applyDiscount}
-        on:click={applyDiscount}
+        on:input={applyDiscount}
       />
       <span class="pointer-events-none">%</span>
     </div>

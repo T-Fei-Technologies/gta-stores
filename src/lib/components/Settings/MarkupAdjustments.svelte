@@ -1,29 +1,38 @@
-<script>
-  import { appSettings } from '$lib/stores/appSettings.ts';
-  import { saveSettings } from '$lib/appSettings/settingsHelpers.ts';
-  import { PART_CATEGORIES } from '$lib/types/PartCategories.ts';
+<script lang="ts">
+  import { appSettings } from '$lib/stores/appSettings';
+  import {
+    saveAppSettings,
+    saveManagementSettings,
+    SETTINGS_DEBOUNCE_MS,
+  } from '$lib/appSettings/settingsHelpers';
+  import { PART_CATEGORIES } from '$lib/types/PartCategories';
+  import { debounceEvent } from '$lib/utils/debounceEvent';
+
+  let onInputChange = async (event: Event) => {
+    $appSettings.markup[event.target.id] = Number(event.target.value);
+    saveAppSettings();
+    await saveManagementSettings();
+  }
 </script>
 
 <div class="mb-4">
-  <h3 class="mb-2 text-xl">Markups</h3>
-
-  <section class="flex justify-between p-4 rounded-lg bg-neutral text-neutral-content">
-    {#each Object.values(PART_CATEGORIES) as category}
-      <div class="form-control relative">
-        <label class="label" for={`${category}-markup`}>
-          <span class="label-text capitalize">{category} % Markup</span>
-        </label>
-        <input
-          type="number"
-          id={`${category}-markup`}
-          class="input input-bordered w-24 text-center"
-          value={$appSettings.markup[category]}
-          on:keyup={(event) => {
-            $appSettings.markup.cosmetics = event.target.value;
-            saveSettings();
-          }}
-        />
-      </div>
-    {/each}
+  <section class="p-4 rounded-lg bg-base-100/70 text-base-content drop-shadow-2xl">
+    <h3 class="mb-2 text-2xl">Markups</h3>
+    <div class="flex justify-between py-4">
+      {#each Object.values(PART_CATEGORIES) as category}
+        <div class="form-control relative">
+          <label class="label" for={`${category}-markup`}>
+            <span class="label-text capitalize">{category} % Markup</span>
+          </label>
+          <input
+            type="number"
+            id={`${category}-markup`}
+            class="input input-bordered rounded-lg w-24 text-center"
+            value={$appSettings.markup[category]}
+            on:input={debounceEvent(onInputChange, SETTINGS_DEBOUNCE_MS)}
+          />
+        </div>
+      {/each}
+    </div>
   </section>
 </div>
