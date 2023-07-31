@@ -5,7 +5,23 @@ export default {
     extend: {},
   },
   daisyui: {
-    themes: ["light", "dark", "business"],
+    themes: [
+      {
+        driftdevil: {
+          "primary": "#b91c1c",
+          "secondary": "#111111",
+          "accent": "#f3f4f6",
+          "neutral": "#111827",
+          "base-100": "#371F1F",
+          "info": "#3ABFF8",
+          "success": "#84cc16",
+          "warning": "#FBBD23",
+          "error": "#e11d48",
+        },
+      },
+      "light",
+      "dark",
+    ],
   },
   plugins: [require('@tailwindcss/typography'), require("daisyui")],
 }

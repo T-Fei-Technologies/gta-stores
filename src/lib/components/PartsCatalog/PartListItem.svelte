@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Plus, Icon } from 'svelte-hero-icons';
-  import { priceFormatter } from '$lib/utils/priceFormatter.ts';
+  import { priceFormatter } from '$lib/utils/priceFormatter';
 
   import type { Part } from '$lib/types/Part';
 
@@ -16,7 +16,7 @@
   title="Add {part.name} to worksheet"
 >
   <Icon src={Plus} size="24" class="w-0 group-hover:w-6 transition-all duration-150 ease-in-out" />
-  <span>
+  <span class="text-left">
     <span class="flex-grow pointer-events-none text-left">{part.name}</span>
     <span class="flex flex-grow text-left text-xs opacity-75 capitalize">
       {part.notes ?? ''}

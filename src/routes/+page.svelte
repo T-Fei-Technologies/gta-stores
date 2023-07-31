@@ -12,7 +12,7 @@
 </svelte:head>
 
 <div class="relative">
-	<section class="rounded-lg p-8 bg-secondary/70 shadow-xl flex flex-col min-h-[90vh] transition duration-150 ease-in-out">
+	<section class="rounded-lg p-8 bg-primary/70 text-primary-content shadow-xl flex flex-col min-h-[90vh] transition duration-150 ease-in-out">
 		<div class="flex items-center justify-between mb-4">
 			<h1 class="text-3xl text-bold">Welcome to {$theme.name}!</h1>
 			<button
@@ -32,11 +32,10 @@
 			<Worksheet />
 		</div>
 	</section>
-	{#if $theme.image}
-		<picture>
-			<img src={$theme.image} class="absolute bottom-0 right-0 pointer-events-none z-0" alt={$theme.name} />
-		</picture>
-	{/if}
+
+	<picture class="absolute top-32 left-1/2 -translate-x-1/2 pointer-events-none z-0">
+		<img src='/ddm-logo.png' class="w-full" alt={$theme.name} />
+	</picture>
 </div>
 
 <style>

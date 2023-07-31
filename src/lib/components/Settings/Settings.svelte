@@ -3,9 +3,9 @@
 </script>
 
 <dialog id="settings_modal" class="modal">
-  <form method="dialog" class="modal-box flex flex-col rounded-lg overflow-hidden px-0 pb-4 max-w-5xl max-sm:max-w-full max-h-full text-base-content">
+  <form method="dialog" class="modal-box flex flex-col rounded-lg overflow-hidden px-0 pb-4 max-w-5xl max-sm:max-w-full max-h-full text-primary-content">
     <div class="flex flex-nowrap items-center justify-between w-full px-5">
-      <h1 class="text-2xl flex-grow">Settings</h1>
+      <h1 class="text-3xl flex-grow">Settings</h1>
       <button type="button" class="btn btn-sm btn-circle btn-ghost" onClick="settings_modal.close()">✕</button>
     </div>
 
@@ -23,7 +23,9 @@
           <span class="text-sm">Click this if you're having issues &rarr;</span>
           <span class="text-sm text-warning">Warning: This will reset everything!</span>
         </div>
-        <button type="button" class="btn btn-primary rounded-lg  ml-2" on:click={clearStorage}>Clear App Storage</button>
+        <button type="button" class="btn btn-primary rounded-lg ml-2 drop-shadow-2xl" on:click={clearStorage}>
+          Clear App Storage
+        </button>
       </div>
     </div>
   </form>

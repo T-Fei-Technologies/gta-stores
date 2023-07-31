@@ -26,7 +26,7 @@
 	});
 </script>
 
-<div class="flex flex-col min-h-screen bg-base text-base-content" data-theme={$theme.daisyUITheme}>
+<div class="flex flex-col min-h-screen bg-secondary text-secondary-content" data-theme={$theme.daisyUITheme}>
 	<Header />
 
 	<main class="flex items-center justify-center flex-grow p-4 w-full max-w-5xl mx-auto">

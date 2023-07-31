@@ -1,13 +1,13 @@
 <script>
-  import { changelog } from '$lib/consts/changelog.ts';
+  import { changelog } from '$lib/consts/changelog';
   import WhatsNewListItem from '$lib/components/Changelog/WhatsNewListItem.svelte';
 </script>
 
 
 <dialog id="changelog_modal" class="modal">
-  <form method="dialog" class="modal-box rounded-lg overflow-hidden px-0 max-w-3xl max-sm:max-w-full h-4/5 max-h-[90vh]">
+  <form method="dialog" class="modal-box rounded-lg overflow-hidden px-0 max-w-3xl max-sm:max-w-full h-4/5 max-h-[90vh] text-primary-content">
     <div class="flex flex-nowrap items-center justify-between px-5">
-      <h1 class="text-2xl flex-grow">What's New</h1>
+      <h1 class="text-3xl flex-grow">What's New</h1>
       <button for="changelog_modal" class="btn btn-sm btn-circle btn-ghost">✕</button>
     </div>
 

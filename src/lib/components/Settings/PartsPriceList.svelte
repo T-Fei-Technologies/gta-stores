@@ -5,10 +5,15 @@
   import type { Part } from '$lib/types/Part';
   import PartsPriceListItem from '$lib/components/Settings/PartsPriceListItem.svelte';
   import PartsCategoryTabs from '$lib/components/PartsCatalog/PartsCategoryTabs.svelte';
-  import { saveSettings } from '$lib/appSettings/settingsHelpers';
+  import {
+    saveAppSettings,
+    saveManagementSettings,
+    SETTINGS_DEBOUNCE_MS,
+  } from '$lib/appSettings/settingsHelpers';
   import { sortByPartName } from '$lib/utils/sortByPartName';
   import NewPartListItem from '$lib/components/Settings/NewPartListItem.svelte';
   import { items } from '$lib/stores/items';
+  import { debounceEvent } from '$lib/utils/debounceEvent';
 
   let activeTab = PART_CATEGORIES.COSMETICS;
   let partToAdd: Part | undefined;
@@ -27,7 +32,8 @@
     }
 
     appSettings.set($appSettings);
-    await saveSettings();
+    saveAppSettings();
+    await saveManagementSettings();
   };
 
   const onConfirmItemDelete = (
@@ -67,7 +73,8 @@
 
     // Update and save the app settings, then close the modal
     appSettings.set($appSettings);
-    await saveSettings();
+    saveAppSettings();
+    await saveManagementSettings();
     onDeletePartModalClose();
   }
 
@@ -84,7 +91,8 @@
       $appSettings.partsCatalog[type].push(part);
     }
     appSettings.set($appSettings);
-    await saveSettings();
+    saveAppSettings();
+    await saveManagementSettings();
 
     setTimeout(() => {
       partToAdd = undefined;
@@ -93,9 +101,9 @@
 </script>
 
 <div class="mb-4">
-  <h3 class="mt-8 mb-2 text-xl">Custom Parts Pricing</h3>
 
-  <section class="flex flex-col justify-between p-4 rounded-lg bg-neutral text-neutral-content">
+  <section class="flex flex-col justify-between p-4 pt-0 mt-8 rounded-lg bg-base-100/70 text-base-content drop-shadow-2xl">
+    <h3 class="my-4 text-2xl">Custom Parts Pricing</h3>
     <div class="mb-4">
       <PartsCategoryTabs bind:activeTab categories={Object.keys($appSettings.partsCatalog)} />
     </div>
@@ -114,14 +122,14 @@
                     <PartsPriceListItem
                       part={part}
                       index={i}
-                      onItemChange={async () => onItemChange(activeTab, subtype)}
+                      onItemChange={onItemChange(activeTab, subtype)}
                       onItemDelete={onConfirmItemDelete(part, activeTab, subtype)}
                       isBeingAdded={partToAdd?.id === part.id}
                       isBeingDeleted={partToDelete?.part.id === part.id}
                     />
                   {/each}
                   <NewPartListItem
-                    onAddPart={async () => onAddPart(activeTab, subtype)}
+                    onAddPart={debounceEvent(onAddPart(activeTab, subtype), SETTINGS_DEBOUNCE_MS)}
                     index={$appSettings.partsCatalog.performance[subtype].length}
                   />
                 </div>
@@ -135,14 +143,14 @@
             <PartsPriceListItem
               part={part}
               index={i}
-              onItemChange={async () => onItemChange(activeTab)}
+              onItemChange={onItemChange(activeTab)}
               onItemDelete={onConfirmItemDelete(part, activeTab)}
               isBeingAdded={partToAdd?.id === part.id}
               isBeingDeleted={partToDelete?.part.id === part.id}
             />
           {/each}
           <NewPartListItem
-            onAddPart={async () => onAddPart(activeTab)}
+            onAddPart={debounceEvent(onAddPart(activeTab), SETTINGS_DEBOUNCE_MS)}
             index={$appSettings.partsCatalog[activeTab].length}
           />
         </div>

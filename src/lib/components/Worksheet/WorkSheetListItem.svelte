@@ -2,7 +2,7 @@
   import { fly } from 'svelte/transition';
   import { cubicOut } from 'svelte/easing';
   import { Trash, Icon } from 'svelte-hero-icons';
-  import { priceFormatter } from '$lib/utils/priceFormatter.ts';
+  import { priceFormatter } from '$lib/utils/priceFormatter';
   import type { WorksheetItem } from '$lib/types/WorksheetItem';
   import { items } from '$lib/stores/items';
   import { getPartById } from '$lib/utils/getPartById';
