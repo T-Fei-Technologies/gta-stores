@@ -11,24 +11,29 @@
   let upgradeGroups = 0;
   let activeTab = Object.keys($appSettings.partsCatalog)[0];
 
-  const onAddItem = (partId: string, type: string, subtype?: string) =>
+  const onAddItem = (partId: string, type: string, subtype?: string, quantity?: number) =>
     items.update((items) => {
       const itemIndex = items.findIndex((item) => item.partId === partId);
 
-      if (itemIndex === -1) {
+      if (itemIndex === -1 && quantity !== 0) {
         return [
           ...items,
           {
             partId,
             type,
             subtype,
-            quantity: 1
+            quantity: quantity ?? 1,
           } as WorksheetItem,
         ];
       }
 
       const updatedItems = [...items];
-      updatedItems[itemIndex].quantity += 1;
+
+      if (quantity === 0) {
+        return updatedItems.filter((item) => item.partId !== partId);
+      } else {
+        updatedItems[itemIndex].quantity = quantity ?? updatedItems[itemIndex].quantity + 1;
+      }
 
       return updatedItems;
     });
@@ -37,7 +42,7 @@
 <div class="rounded-lg flex flex-col p-6 bg-base-100/70 md:w-[450px]">
   <h1 class="text-2xl pb-4">Parts Catalog</h1>
 
-  <div class="flex justify-center">
+  <div class="flex justify-center ">
     <PartsCategoryTabs bind:activeTab categories={Object.values(PART_CATEGORIES)} />
   </div>
 
