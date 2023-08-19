@@ -47,6 +47,8 @@
         </span>
       </span>
       <div class="flex justify-center gap-2">
+
+        <button class="btn btn-error" on:click={() => showMobileQuantity = !showMobileQuantity}>&cross;</button>
         <button class="btn btn-primary" on:click={() => quantity = Math.max(0, quantity - 1)}>&minus;</button>
         <input
           type="number"
