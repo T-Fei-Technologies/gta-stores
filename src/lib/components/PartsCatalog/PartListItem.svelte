@@ -39,7 +39,7 @@
   </button>
 
   {#if showMobileQuantity}
-    <div class="absolute inset-0 flex flex-col w-full bg-secondary text-secondary-content rounded-lg p-2" in:fly={{ x:-20 }} out:fly={{ x:20 }}>
+    <div class="absolute inset-0 flex flex-col w-full bg-secondary text-secondary-content rounded-lg p-2 drop-shadow-2xl" in:fly={{ x:-20 }} out:fly={{ x:20 }}>
       <span class="text-left mb-2">
         <span class="flex-grow pointer-events-none text-left font-bold">{part.name}</span>
         <span class="flex flex-grow text-left text-xs opacity-75 capitalize">
