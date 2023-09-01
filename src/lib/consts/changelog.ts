@@ -1,6 +1,13 @@
 import type { WhatsNew } from '$lib/types/WhatsNew';
 
-export const changelog: WhatsNew[] = [
+export const changelog: WhatsNew[] = [{
+  version: '1.1.1',
+  title: `Minor Update - Special Label and Billing Command Copy`,
+  features: [
+    `Added a space for a special label for a receipt when billing a customer`,
+    `Added a display for the billing command to use for a bill including a copy to clipboard button`
+  ],
+},
   {
     version: '1.1.0',
     title: `Mobile-Friendly`,

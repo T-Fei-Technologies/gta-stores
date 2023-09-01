@@ -8,6 +8,9 @@
 
   export let closeDrawer: () => void;
 
+  let magicNumber = '';
+  let label = '';
+
   const onClearItems = () => {
     items.set([]);
     closeDrawer();
@@ -30,6 +33,18 @@
     </button>
   </div>
   <div class="flex flex-col justify-between h-full rounded pb-2">
+    <div class="form-control">
+      <label class="label" for="magic-number">
+        <span class="label-text">Magic Number</span>
+      </label>
+      <input type="text" id="magic-number" class="input input-bordered mb-2" placeholder="Customer's Magic Number" bind:value={magicNumber} />
+    </div>
+    <div class="form-control">
+      <label class="label" for="label">
+        <span class="label-text">Special Label</span>
+      </label>
+      <input type="text" id="label" class="input input-bordered mb-2" placeholder="Special label if needed" bind:value={label} />
+    </div>
     <div class="flex flex-col flex-grow">
       <div class="divider">Items</div>
       <div class="p-2 flex-grow overflow-y-auto">
@@ -48,7 +63,7 @@
       </div>
     </div>
     <div class="flex flex-col items-end">
-      <WorkSheetTotals />
+      <WorkSheetTotals {magicNumber} {label} />
     </div>
   </div>
   <label for="mobile-drawer" class="btn btn-outline btn-accent self-end sm:hidden hover:text-accent">

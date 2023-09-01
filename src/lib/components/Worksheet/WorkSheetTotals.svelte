@@ -5,10 +5,30 @@
   import { saveAppSettings } from '$lib/appSettings/settingsHelpers';
   import { PART_CATEGORIES } from '$lib/types/PartCategories';
   import { getPartById } from '$lib/utils/getPartById';
+  import {
+    DocumentDuplicate,
+    Icon,
+  } from 'svelte-hero-icons';
+
+  export let magicNumber = '';
+  export let label = '';
 
   const applyDiscount = (event: Event) => {
     $appSettings.discount = Math.max(Math.min(Number(event.target.value), 100), 0);
     saveAppSettings();
+  };
+
+  const copyToClipboard = (event: Event) => {
+    const el = document.createElement('textarea');
+    el.value = billingCommand;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+
+    const tooltip = event.target.closest('.tooltip-success');
+    tooltip.classList.add('tooltip', 'tooltip-open');
+    setTimeout(() => tooltip.classList.remove('tooltip', 'tooltip-open'), 2000);
   };
 
   $: getItemCost = (partId: string): number => {
@@ -36,6 +56,10 @@
 
   $: discount = (subTotal * $appSettings.discount / 100);
   $: totalCost = Math.max(subTotal - discount, 0);
+
+  $: billingCommand = '/billing '
+                      + `${magicNumber && magicNumber.trim() !== '' ? magicNumber : '[special number]'} `
+                      + `${totalCost} ${label && label.trim() !== '' ? label : 'DDM'}`;
 </script>
 
 <div class="divider"></div>
@@ -82,4 +106,18 @@
 <div class="grid grid-cols-3 w-full mr-0 text-right">
   <span class="text-2xl col-span-2 text-right">Total</span>
   <span class="text-right text-2xl">{priceFormatter.format(totalCost)}</span>
+</div>
+
+<div class="grid-cols-3 w-full mt-4 form-control">
+  <div>
+    <span class="label-text">Billing</span>
+  </div>
+  <div class="join">
+    <span class="flex items-center input input-bordered join-item w-full">{billingCommand}</span>
+    <div class="tooltip-success" data-tip="Copied to clipboard!">
+      <button type="button" class="btn btn-accent btn-outline join-item" on:click={copyToClipboard}>
+        <Icon src={DocumentDuplicate} size="28" />
+      </button>
+    </div>
+  </div>
 </div>
