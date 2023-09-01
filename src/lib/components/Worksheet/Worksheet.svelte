@@ -41,9 +41,9 @@
     </div>
     <div class="form-control">
       <label class="label" for="label">
-        <span class="label-text">Special Label</span>
+        <span class="label-text">Mech Name</span>
       </label>
-      <input type="text" id="label" class="input input-bordered mb-2" placeholder="Special label if needed" bind:value={label} />
+      <input type="text" id="label" class="input input-bordered mb-2" placeholder="This appears on the billing" bind:value={label} />
     </div>
     <div class="flex flex-col flex-grow">
       <div class="divider">Items</div>

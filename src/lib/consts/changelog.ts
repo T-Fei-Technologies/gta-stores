@@ -7,6 +7,9 @@ export const changelog: WhatsNew[] = [{
     `Added a space for a special label for a receipt when billing a customer`,
     `Added a display for the billing command to use for a bill including a copy to clipboard button`
   ],
+  bugfixes: [
+    `Fixed a bug where markups would not be updated properly from the management page`,
+  ],
 },
   {
     version: '1.1.0',

@@ -26,7 +26,7 @@
           </label>
           <input
             type="number"
-            id={`${category}-markup`}
+            id={`${category}`}
             class="input input-bordered rounded-lg w-24 text-center"
             value={$appSettings.markup[category]}
             on:input={debounceEvent(onInputChange, SETTINGS_DEBOUNCE_MS)}
