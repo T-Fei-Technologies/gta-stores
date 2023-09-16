@@ -10,34 +10,21 @@ export const loadSettings = async () => {
 
   if (fetchedSettings.ok) {
     const fetchedSettingsJson = await fetchedSettings.json();
-    localStorage.setItem('appSettings', JSON.stringify(fetchedSettingsJson));
     appSettings.set({ ...defaultAppSettings, ...fetchedSettingsJson });
     return;
   }
 
   if (!fetchedSettings.ok) {
-    // Fetch the appSettings catalog from local storage
-    const storedSettings = localStorage.getItem('appSettings');
+    const fetchedDefaultSettings = await fetch(`/default-settings.json`);
 
-    // If the app settings exist, use them or create a new one from our seed data
-    if (!storedSettings) {
-      // Try fetching default prices from API
-      const fetchedDefaultSettings = await fetch(`/default-settings.json`);
+    if (fetchedDefaultSettings.ok) {
+      const fetchedDefaultSettingsJson = await fetchedDefaultSettings.json();
+      appSettings.set({ ...defaultAppSettings, ...fetchedDefaultSettingsJson });
+      return;
+    }
 
-      if (fetchedDefaultSettings.ok) {
-        const fetchedDefaultSettingsJson = await fetchedDefaultSettings.json();
-        localStorage.setItem('appSettings', JSON.stringify(fetchedDefaultSettingsJson));
-        appSettings.set({ ...defaultAppSettings, ...fetchedDefaultSettingsJson });
-        return;
-      }
-
-      if (!fetchedDefaultSettings.ok) {
-        localStorage.setItem('appSettings', JSON.stringify(defaultAppSettings));
-      }
-
-      appSettings.set(defaultAppSettings);
-    } else {
-      appSettings.set({ ...defaultAppSettings, ...JSON.parse(storedSettings) });
+    if (!fetchedDefaultSettings.ok) {
+      // Throw error if we can't fetch from API
     }
   }
 };
@@ -48,28 +35,18 @@ export const loadDefaultSettings = async () => {
 
   if (fetchedSettings.ok) {
     const fetchedSettingsJson = await fetchedSettings.json();
-    localStorage.setItem('appSettings', JSON.stringify(fetchedSettingsJson));
     appSettings.set({ ...defaultAppSettings, ...fetchedSettingsJson });
     return;
   }
 
   if (!fetchedSettings.ok) {
-    // Fetch the appSettings catalog from local storage
-    const storedSettings = localStorage.getItem('appSettings');
-
-    // If the app settings exist, use them or create a new one from our seed data
-    if (!storedSettings) {
-      localStorage.setItem('appSettings', JSON.stringify(defaultAppSettings));
-      appSettings.set(defaultAppSettings);
-    } else {
-      appSettings.set(JSON.parse(storedSettings));
-    }
+    // Throw error if we can't fetch from API
   }
 };
 
 export const saveAppSettings = () => {
-  const jsonAppSettings = JSON.stringify(get(appSettings));
-  localStorage.setItem('appSettings', jsonAppSettings);
+  const jsonAppSettings = JSON.stringify(null);
+  localStorage.setItem('userSettings', jsonAppSettings);
 };
 
 export const saveManagementSettings = async () => {
