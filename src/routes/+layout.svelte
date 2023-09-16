@@ -10,6 +10,9 @@
 	import Changelog from '$lib/components/Changelog/Changelog.svelte';
 
 	onMount(async () => {
+		// Clear App Storage for transition to v1.2.1
+		localStorage.clear();
+
 		// Load settings from local storage
 		await loadSettings();
 

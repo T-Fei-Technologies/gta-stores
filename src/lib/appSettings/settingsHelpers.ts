@@ -46,7 +46,7 @@ export const loadDefaultSettings = async () => {
 
 export const saveAppSettings = () => {
   const jsonAppSettings = JSON.stringify(null);
-  localStorage.setItem('userSettings', jsonAppSettings);
+  // localStorage.setItem('userSettings', jsonAppSettings);
 };
 
 export const saveManagementSettings = async () => {
