@@ -1,5 +1,5 @@
 export const load = ({ setHeaders }) => {
   setHeaders({
-    'cache-control': 'max-age=60',
+    'cache-control': 'no-cache',
   });
 }
