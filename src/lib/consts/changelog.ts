@@ -1,16 +1,30 @@
 import type { WhatsNew } from '$lib/types/WhatsNew';
 
-export const changelog: WhatsNew[] = [{
-  version: '1.1.1',
-  title: `Minor Update - Special Label and Billing Command Copy`,
-  features: [
-    `Added a space for a special label for a receipt when billing a customer`,
-    `Added a display for the billing command to use for a bill including a copy to clipboard button`
-  ],
-  bugfixes: [
-    `Fixed a bug where markups would not be updated properly from the management page`,
-  ],
-},
+export const changelog: WhatsNew[] = [
+  {
+    version:  '1.2.1',
+    title:    `Major Update - Updated based on new performance parts`,
+    features: [
+      `Updated catalog with new performance parts and prices`,
+    ],
+    other: [
+      `Removed local storage for settings and catalog items. Was causing too many issues`,
+      `Removed local install capability for the same reason`,
+      `Removed the settings cog since there's no longer a need for it`,
+      `Updated readme to reflect new name (whoops for taking so long)`,
+    ],
+  },
+  {
+    version: '1.1.1',
+    title: `Minor Update - Special Label and Billing Command Copy`,
+    features: [
+      `Added a space for a special label for a receipt when billing a customer`,
+      `Added a display for the billing command to use for a bill including a copy to clipboard button`
+    ],
+    bugfixes: [
+      `Fixed a bug where markups would not be updated properly from the management page`,
+    ],
+  },
   {
     version: '1.1.0',
     title: `Mobile-Friendly`,

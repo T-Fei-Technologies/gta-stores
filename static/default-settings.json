@@ -1,6 +1,6 @@
 {
   "markup": {
-    "cosmetics": 10,
+    "cosmetics": 20,
     "performance": 20,
     "tools": 0
   },
@@ -30,47 +30,62 @@
     ],
     "performance": {
       "engine": [
-        { "id": "peen1", "name":  "Tier 1 Engine", "cost":  2000 },
-        { "id": "peen2", "name":  "Tier 2 Engine", "cost":  4000 },
-        { "id": "peen3", "name":  "Tier 3 Engine", "cost":  8000 },
-        { "id": "peen4", "name":  "Tier 4 Engine", "cost":  16000 },
-        { "id": "peen5", "name":  "Tier 5 Engine", "cost":  25000 }
+        { "id": "peenstock", "name":  "Stock Engine", "cost":  1000 },
+        { "id": "peen1", "name":  "Stage 1 Engine", "cost":  2000 },
+        { "id": "peen2", "name":  "Stage 2 Engine", "cost":  4000 },
+        { "id": "peen3", "name":  "Stage 3 Engine", "cost":  8000 },
+        { "id": "peen4", "name":  "Stage 4 Engine", "cost":  30000 },
+        { "id": "peen4viper", "name":  "Stage 4 Viper V10", "cost":  30000 },
+        { "id": "peen4muscle", "name":  "Stage 4 Muscle V8", "cost":  30000 },
+        { "id": "peen4rotary", "name":  "Stage 4 Rotary", "cost":  30000 },
+        { "id": "peen4488", "name":  "Stage 4 488", "cost":  30000 },
+        { "id": "peen4brabus", "name":  "Stage 4 Brabus 850", "cost":  30000 },
+        { "id": "peen4supra", "name":  "Stage 4 Supra MK4", "cost":  30000 }
       ],
       "transmission": [
-          { "id": "petr1", "name":  "Tier 1 Transmission", "cost":  2000 },
-          { "id": "petr2", "name":  "Tier 2 Transmission", "cost":  4000 },
-          { "id": "petr3", "name":  "Tier 3 Transmission", "cost":  8000 },
-          { "id": "petr4", "name":  "Tier 4 Transmission", "cost":  16000 }
+        { "id": "petrstock", "name":  "Stock Transmission", "cost":  1000 },
+        { "id": "petrrtrwd", "name":  "Race Transmission RWD", "cost":  16000 },
+        { "id": "petrrt4wd", "name":  "Race Transmission 4WD", "cost":  16000 },
+        { "id": "petrrtfwd", "name":  "Race Transmission FWD", "cost":  16000 }
       ],
       "brakes": [
-          { "id": "pebr1", "name":  "Tier 1 Brakes", "cost":  4000 },
-          { "id": "pebr2", "name":  "Tier 2 Brakes", "cost":  8000 },
-          { "id": "pebr3", "name":  "Tier 3 Brakes", "cost":  16000 }
+        { "id": "pebrstock", "name":  "Stock Brakes", "cost":  1000 },
+        { "id": "pebr1", "name":  "Stage 1 Brakes", "cost":  2000 },
+        { "id": "pebr2", "name":  "Stage 2 Brakes", "cost":  4000 },
+        { "id": "pebr3", "name":  "Stage 3 Brakes", "cost":  8000 },
+        { "id": "pebrrace", "name":  "Race Brakes", "cost":  16000 }
       ],
       "suspension": [
-          { "id": "pesu1", "name":  "Tier 1 Suspension", "cost":  1000 },
-          { "id": "pesu2", "name":  "Tier 2 Suspension", "cost":  3000 },
-          { "id": "pesu3", "name":  "Tier 3 Suspension", "cost":  5000 },
-          { "id": "pesu4", "name":  "Tier 4 Suspension", "cost":  7000 },
-          { "id": "pesu5", "name":  "Tier 5 Suspension", "cost":  9000 }
+        { "id": "pesustock", "name":  "Stock Suspension", "cost":  1000 },
+        { "id": "pesu1", "name":  "Stage 1 Suspension", "cost":  2000 },
+        { "id": "pesu2", "name":  "Stage 2 Suspension", "cost":  4000 },
+        { "id": "pesu3", "name":  "Stage 3 Suspension", "cost":  6000 },
+        { "id": "pesurace", "name":  "Race Suspension", "cost":  16000 }
       ],
       "other": [
-        { "id": "peot1", "name": "Supercharger Turbo", "cost": 15000 },
-        { "id": "peot2", "name": "Drift Tires", "cost": 2500 }
+        { "id": "peotebayturbo", "name": "EBay Turbo", "cost": 8000 },
+        { "id": "peotgaretturbo", "name": "Garet Turbo", "cost": 18000 },
+        { "id": "peotstocktires", "name": "Stock Tires", "cost": 1000 },
+        { "id": "peotmichelintires", "name": "Michelin Tires", "cost": 8000 },
+        { "id": "peotstockoil", "name": "Stock Oil", "cost": 500 },
+        { "id": "peotshelloil", "name": "Shell Oil", "cost": 2000 },
+        { "id": "peotstocksparks", "name": "Stock Sparkplug", "cost": 1000 },
+        { "id": "peotngksparks", "name": "NGK Sparkplug", "cost": 5000 }
       ]
     },
     "tools": [
-      { "id": "re1", "name": "Car Parts", "cost": 25 },
-      { "id": "re2", "name": "Advanced Car Parts", "cost": 300 },
-      { "id": "re3", "name": "Mechanic Tools", "cost": 500 },
-      { "id": "re4", "name": "Toolbox", "cost": 500 },
-      { "id": "re5", "name": "Duct Tape", "cost": 100 },
-      { "id": "re6", "name": "Neon Controller", "cost": 2500 },
-      { "id": "re7", "name": "Cleaning Kit", "cost": 50 },
-      { "id": "re8", "name": "Power Saw", "cost": 500 },
-      { "id": "re9", "name": "Saw Blade", "cost": 100 },
-      { "id": "re10", "name": "Screwdriver", "cost": 50 },
-      { "id": "re11", "name": "Tow", "cost": 750}
+      { "id": "readvparts", "name": "Advanced Car Parts", "cost": 333 },
+      { "id": "rebrk", "name": "Body Repair Kit", "cost": 100 },
+      { "id": "remtools", "name": "Mechanic Tools", "cost": 500 },
+      { "id": "retoolbox", "name": "Toolbox", "cost": 500 },
+      { "id": "reducttape", "name": "Duct Tape", "cost": 250 },
+      { "id": "reneon", "name": "Neon Controller", "cost": 2500 },
+      { "id": "recleaningkit", "name": "Cleaning Kit", "cost": 50 },
+      { "id": "resaw", "name": "Power Saw", "cost": 500 },
+      { "id": "resawblade", "name": "Saw Blade", "cost": 100 },
+      { "id": "rescrewdriver", "name": "Screwdriver", "cost": 100 },
+      { "id": "retow", "name": "Tow", "cost": 750},
+      { "id": "repartswap", "name": "Old Parts Swap", "cost": 2000 }
     ]
   }
 }

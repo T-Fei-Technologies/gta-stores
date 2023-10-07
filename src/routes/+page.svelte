@@ -3,7 +3,7 @@
 	import PartsCatalog from '$lib/components/PartsCatalog/PartsCatalog.svelte';
 	import Worksheet from '$lib/components/Worksheet/Worksheet.svelte';
 	import { theme } from '$lib/stores/theme';
-	import { Cog8Tooth, ShoppingCart, Icon } from 'svelte-hero-icons';
+	import { ShoppingCart, Icon } from 'svelte-hero-icons';
 	import { getItemCount } from '$lib/utils/getItemCount';
 	import { items } from '$lib/stores/items';
 
@@ -23,16 +23,6 @@
 	<section class="rounded-lg pb-8 md:p-8 box-border bg-primary/70 text-primary-content shadow-xl flex flex-col min-h-[90vh] transition duration-150 ease-in-out">
 		<div class="flex items-center justify-between mb-4 p-4 md:p-0">
 			<h1 class="text-lg md:text-3xl text-bold">Welcome to {$theme.name}!</h1>
-			<button
-				title="Settings"
-				class="flex items-center gap-0 p-1 pl-2 group rounded cursor-pointer drop-shadow-2xl hover:text-accent"
-				onClick="settings_modal.showModal()"
-			>
-        <span class="w-0 mr-0 group-hover:w-16 group-hover:mr-1 overflow-hidden transition-all duration-150 ease-in-out">
-          Settings&nbsp;
-        </span>
-				<Icon src={Cog8Tooth} size="32" />
-			</button>
 		</div>
 
 		<div
