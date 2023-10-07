@@ -28,7 +28,6 @@ Here is the tech I used at-a-glance
 - DaisyUI 3.5.0
 - Svelte Hero Icons 5.0.0
 - Theme Change 2.5.0
-- Workbox-precaching 7.0.0 (for PWA/Offline support)
 
 All data from app settings is saved to local storage, so it will persist between sessions, but not if the user clears their cache.
 
