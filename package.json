@@ -1,6 +1,6 @@
 {
-	"name": "gta-dda",
-	"version": "1.1.1",
+	"name": "gta-ddm",
+	"version": "1.2.1",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
