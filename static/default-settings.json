@@ -74,7 +74,7 @@
       ]
     },
     "tools": [
-      { "id": "readvparts", "name": "Advanced Car Parts", "cost": 333 },
+      { "id": "readvparts", "name": "Advanced Car Parts", "cost": 300 },
       { "id": "rebrk", "name": "Body Repair Kit", "cost": 100 },
       { "id": "remtools", "name": "Mechanic Tools", "cost": 500 },
       { "id": "retoolbox", "name": "Toolbox", "cost": 500 },
