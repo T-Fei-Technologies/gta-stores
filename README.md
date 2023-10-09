@@ -2,7 +2,7 @@
 
 ## Drift Devil Mechanics
 
-Live at: https://gta-ddm.vercel.app/
+Live at: https://pricing-sheet.driftdevilsmechanics.com/
 
 Made for some of my mechanic friends on the Stellar Roleplay GTA Five-M server, 4M is a quick and handy worksheet for mechanics to use for calculate charges when doing repairs/upgrades.
 An easy way to keep a running total for big orders or if you just hate mathing things.
