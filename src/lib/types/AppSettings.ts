@@ -1,17 +1,11 @@
 import type { Part } from '$lib/types/Part';
-
-export type PartsCatalog = {
-  cosmetics: Part[];
-  performance: { [key: string]: Part[] };
-  tools: Part[];
-};
+import type { Category } from '$lib/types/Category';
+import type { SubCategory } from '$lib/types/SubCategory';
 
 export type AppSettings = {
-  markup: {
-    cosmetics: number;
-    performance: number;
-    tools: number;
-  };
+  categories: Category[];
+  subCategories: SubCategory[];
   discount: number;
-  partsCatalog: PartsCatalog;
-}
+  markup: Record<string, number>;
+  partsCatalog: Part[];
+};

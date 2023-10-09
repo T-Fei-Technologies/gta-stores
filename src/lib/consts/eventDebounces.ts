@@ -1,0 +1,1 @@
+export const SETTINGS_DEBOUNCE_MS = 1500;

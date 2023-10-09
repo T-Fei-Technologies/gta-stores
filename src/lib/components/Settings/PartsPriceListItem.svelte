@@ -3,13 +3,13 @@
   import type { Part } from '$lib/types/Part';
   import { Icon, Trash } from 'svelte-hero-icons';
   import { debounceEvent } from '$lib/utils/debounceEvent';
-  import { SETTINGS_DEBOUNCE_MS } from '$lib/appSettings/settingsHelpers';
+  import { SETTINGS_DEBOUNCE_MS } from '$lib/consts/eventDebounces';
 
   export let part: Part;
   export let index: number;
   export let isBeingAdded: boolean;
   export let isBeingDeleted: boolean;
-  export let onItemChange: (part: Part, prop: keyof Part, value: string | number) => Promise<void>;
+  // export let onItemChange: (part: Part, prop: keyof Part, value: string | number) => Promise<void>;
   export let onItemDelete: () => void;
 
   const flyAnim = (node, args) => isBeingAdded ? fly(node, { ...args, delay: 0 }) : {};
@@ -18,7 +18,7 @@
 
   const onItemChanged = async (event: Event) => {
     const { name, value } = event.target;
-    await onItemChange(part, name, value);
+    // await onItemChange(part, name, value);
   };
 </script>
 

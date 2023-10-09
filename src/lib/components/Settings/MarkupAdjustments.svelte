@@ -1,17 +1,12 @@
 <script lang="ts">
   import { appSettings } from '$lib/stores/appSettings';
-  import {
-    saveAppSettings,
-    saveManagementSettings,
-    SETTINGS_DEBOUNCE_MS,
-  } from '$lib/appSettings/settingsHelpers';
-  import { PART_CATEGORIES } from '$lib/types/PartCategories';
   import { debounceEvent } from '$lib/utils/debounceEvent';
+  import { SETTINGS_DEBOUNCE_MS } from '$lib/consts/eventDebounces';
 
   let onInputChange = async (event: Event) => {
-    $appSettings.markup[event.target.id] = Number(event.target.value);
-    saveAppSettings();
-    await saveManagementSettings();
+    // $appSettings.markup[event.target.id] = Number(event.target.value);
+    // saveAppSettings();
+    // await saveManagementSettings();
   }
 </script>
 
@@ -19,7 +14,7 @@
   <section class="p-4 rounded-lg bg-base-100/70 text-base-content drop-shadow-2xl">
     <h3 class="mb-2 text-2xl">Markups</h3>
     <div class="flex justify-between py-4">
-      {#each Object.values(PART_CATEGORIES) as category}
+      {#each Object.values({}) as category}
         <div class="form-control relative">
           <label class="label" for={`${category}-markup`}>
             <span class="label-text capitalize">{category} % Markup</span>

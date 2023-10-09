@@ -4,17 +4,12 @@
 	import { onMount } from 'svelte';
 	import { THEMES } from '$lib/consts/themes';
 	import { theme } from '$lib/stores/theme';
-	import { loadSettings } from '$lib/appSettings/settingsHelpers';
 	import Footer from './Footer.svelte';
-	import Settings from '$lib/components/Settings/Settings.svelte';
 	import Changelog from '$lib/components/Changelog/Changelog.svelte';
 
-	onMount(async () => {
+		onMount(async () => {
 		// Clear App Storage for transition to v1.2.1
 		localStorage.clear();
-
-		// Load settings from local storage
-		await loadSettings();
 
 		// Grab the theme from the URL
 		const urlParams = new URLSearchParams(window.location.search);
@@ -41,4 +36,3 @@
 
 <!-- Modals -->
 <Changelog />
-<Settings />
