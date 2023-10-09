@@ -2,6 +2,16 @@ import type { WhatsNew } from '$lib/types/WhatsNew';
 
 export const changelog: WhatsNew[] = [
   {
+    version:  '2.0.0',
+    title:    `Version Update - Migration to Database`,
+    features: [
+      `All parts and markup are now stored in a database so they should properly persist and no longer have caching issues`,
+    ],
+    other: [
+      `Removed the Cosmetics category until it gets implemented again in-city`,
+    ],
+  },
+  {
     version:  '1.2.1',
     title:    `Major Update - Updated based on new performance parts`,
     features: [

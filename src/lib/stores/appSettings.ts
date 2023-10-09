@@ -1,5 +1,10 @@
 import { writable } from 'svelte/store';
 import type { AppSettings } from '$lib/types/AppSettings';
-import { defaultAppSettings } from '$lib/consts/defaultAppSettings';
 
-export const appSettings = writable<AppSettings>(defaultAppSettings);
+export const appSettings = writable<AppSettings>({
+  categories: [],
+  subCategories: [],
+  discount: 0,
+  markup: {},
+  partsCatalog: [],
+});

@@ -2,9 +2,6 @@
   import { priceFormatter } from '$lib/utils/priceFormatter';
   import { items } from '$lib/stores/items';
   import { appSettings } from '$lib/stores/appSettings';
-  import { saveAppSettings } from '$lib/appSettings/settingsHelpers';
-  import { PART_CATEGORIES } from '$lib/types/PartCategories';
-  import { getPartById } from '$lib/utils/getPartById';
   import {
     DocumentDuplicate,
     Icon,
@@ -14,45 +11,31 @@
   export let label = '';
 
   const applyDiscount = (event: Event) => {
-    $appSettings.discount = Math.max(Math.min(Number(event.target.value), 100), 0);
-    saveAppSettings();
+    $appSettings.discount = Math.max(Math.min(Number(event.target?.value), 100), 0);
   };
 
-  const copyToClipboard = (event: Event) => {
-    const el = document.createElement('textarea');
-    el.value = billingCommand;
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
+  const copyToClipboard = async (event: Event) => {
+    await navigator.clipboard.writeText(billingCommand);
 
-    const tooltip = event.target.closest('.tooltip-success');
+    const tooltip = event.target?.closest('.tooltip-success');
     tooltip.classList.add('tooltip', 'tooltip-open');
     setTimeout(() => tooltip.classList.remove('tooltip', 'tooltip-open'), 2000);
   };
 
-  $: getItemCost = (partId: string): number => {
-    const part = getPartById($appSettings.partsCatalog, partId);
-    return part?.cost || 0;
-  };
+  $: baseTotal = $items.reduce((acc, item) => acc + item.part.cost * item.quantity, 0);
 
-  $: baseTotal = $items.reduce((acc, item) => acc + getItemCost(item.partId) * item.quantity, 0);
+  $: categoryTotals = $appSettings.categories.map(category => (
+    $items.filter(item => item.part.category === category.id)
+      .reduce((acc, item) => acc + item.part.cost * item.quantity, 0)
+  ));
+  $: categoryMarkups = $appSettings.categories.map(category => {
+    const markup = $appSettings.markup[category.id] ?? 0;
+    const total = categoryTotals[$appSettings.categories.indexOf(category)];
 
-  $: cosmeticsTotal = $items.filter(item => item.type === PART_CATEGORIES.COSMETICS)
-    .reduce((acc, item) => acc + getItemCost(item.partId) * item.quantity, 0);
-  $: cosmeticsMarkup = cosmeticsTotal * ($appSettings.markup.cosmetics / 100);
+    return total * (markup / 100);
+  });
 
-  $: performanceTotal = $items.filter(item => item.type === PART_CATEGORIES.PERFORMANCE)
-    .reduce((acc, item) => acc + getItemCost(item.partId) * item.quantity, 0);
-  $: performanceMarkup = performanceTotal * ($appSettings.markup.performance / 100);
-
-  $: toolsTotal = $items.filter(item => item.type === PART_CATEGORIES.TOOLS)
-    .reduce((acc, item) => acc + getItemCost(item.partId) * item.quantity, 0);
-  $: toolsMarkup = toolsTotal * ($appSettings.markup.tools / 100);
-
-  $: subTotal = cosmeticsTotal + cosmeticsMarkup
-                + performanceTotal + performanceMarkup
-                + toolsTotal + toolsMarkup;
+  $: subTotal = categoryMarkups.reduce((acc, markup, index) => acc + markup + categoryTotals[index], 0);
 
   $: discount = (subTotal * $appSettings.discount / 100);
   $: totalCost = Math.max(subTotal - discount, 0);
@@ -68,20 +51,12 @@
   <span class="text-right">{priceFormatter.format(baseTotal)}</span>
 </div>
 
-<div class="grid grid-cols-3 w-full text-right">
-  <span class="col-span-2 capitalize">{PART_CATEGORIES.COSMETICS} Markup ({$appSettings.markup.cosmetics}&percnt;)</span>
-  <span>{priceFormatter.format(cosmeticsMarkup)}</span>
-</div>
-
-<div class="grid grid-cols-3 w-full text-right">
-  <span class="col-span-2 capitalize">{PART_CATEGORIES.PERFORMANCE} Markup ({$appSettings.markup.performance}&percnt;)</span>
-  <span>{priceFormatter.format(performanceMarkup)}</span>
-</div>
-
-<div class="grid grid-cols-3 w-full text-right">
-  <span class="col-span-2 capitalize">{PART_CATEGORIES.TOOLS} Markup ({$appSettings.markup.tools}&percnt;)</span>
-  <span>{priceFormatter.format(toolsMarkup)}</span>
-</div>
+{#each categoryMarkups as markup, index}
+  <div class="grid grid-cols-3 w-full text-right">
+    <span class="col-span-2 capitalize">{$appSettings.categories[index].name} Markup ({$appSettings.markup[$appSettings.categories[index].id]}&percnt;)</span>
+    <span>{priceFormatter.format(markup)}</span>
+  </div>
+{/each}
 
 <div class="grid grid-cols-3 w-full text-right text-lg mt-2">
   <span class="col-span-2">Sub-Total</span>

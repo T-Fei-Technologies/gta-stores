@@ -1,5 +1,7 @@
-export const load = ({ setHeaders }) => {
+import type { ServerLoadEvent } from '@sveltejs/kit';
+
+export const load = ({ setHeaders }: ServerLoadEvent) => {
   setHeaders({
-    'cache-control': 'no-cache',
+    'cache-control': 'public, max-age=3600',
   });
-}
+};

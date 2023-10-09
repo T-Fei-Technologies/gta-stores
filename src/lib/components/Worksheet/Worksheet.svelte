@@ -47,8 +47,8 @@
     </div>
     <div class="flex flex-col flex-grow">
       <div class="divider">Items</div>
-      <div class="p-2 flex-grow overflow-y-auto">
-        {#each $items as item, index (item.partId)}
+      <div class="p-2 flex-grow overflow-y-hidden overflow-x-hidden">
+        {#each $items as item, index (item.part.id)}
           <WorkSheetListItem {item} index={index} />
         {/each}
         {#if $items.length === 0}

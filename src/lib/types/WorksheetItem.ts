@@ -1,8 +1,6 @@
-import type { PART_CATEGORIES } from '$lib/types/PartCategories';
+import type { Part } from '$lib/types/Part';
 
 export type WorksheetItem = {
-  partId: string;
+  part: Part;
   quantity: number;
-  type: PART_CATEGORIES;
-  subtype?: string;
 }
