@@ -42,7 +42,7 @@
 
   $: billingCommand = '/billing '
                       + `${magicNumber && magicNumber.trim() !== '' ? magicNumber : '[special number]'} `
-                      + `${totalCost} ${label && label.trim() !== '' ? label : 'DDM'}`;
+                      + `${totalCost} ${label && label.trim() !== '' ? label : $appSettings.store.billing_key}`;
 </script>
 
 <div class="divider"></div>

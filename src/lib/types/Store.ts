@@ -9,4 +9,5 @@ export type Store = {
   favicon_url: string;
   products_name: string;
   worksheet_name: string;
+  billing_key: string;
 };
