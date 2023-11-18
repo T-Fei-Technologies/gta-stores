@@ -2,6 +2,13 @@ import type { WhatsNew } from '$lib/types/WhatsNew';
 
 export const changelog: WhatsNew[] = [
   {
+    version:  '2.1.0',
+    title:    `Multi-Store Support`,
+    features: [
+      `Changes to support multiple stores driven by the DB and environment variables`,
+    ],
+  },
+  {
     version:  '2.0.0',
     title:    `Version Update - Migration to Database`,
     features: [

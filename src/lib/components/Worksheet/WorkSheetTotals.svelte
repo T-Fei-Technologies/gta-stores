@@ -52,16 +52,20 @@
 </div>
 
 {#each categoryMarkups as markup, index}
-  <div class="grid grid-cols-3 w-full text-right">
-    <span class="col-span-2 capitalize">{$appSettings.categories[index].name} Markup ({$appSettings.markup[$appSettings.categories[index].id]}&percnt;)</span>
-    <span>{priceFormatter.format(markup)}</span>
-  </div>
+  {#if markup > 0}
+    <div class="grid grid-cols-3 w-full text-right">
+      <span class="col-span-2 capitalize">{$appSettings.categories[index].name} Markup ({$appSettings.markup[$appSettings.categories[index].id]}&percnt;)</span>
+      <span>{priceFormatter.format(markup)}</span>
+    </div>
+  {/if}
 {/each}
 
-<div class="grid grid-cols-3 w-full text-right text-lg mt-2">
-  <span class="col-span-2">Sub-Total</span>
-  <span>{priceFormatter.format(subTotal)}</span>
-</div>
+{#if categoryMarkups.some(markup => markup > 0)}
+  <div class="grid grid-cols-3 w-full text-right text-lg mt-2">
+    <span class="col-span-2">Sub-Total</span>
+    <span>{priceFormatter.format(subTotal)}</span>
+  </div>
+{/if}
 
 <div class="grid grid-cols-3 w-full m-4 mb-0 mr-0 text-right">
     <div class="col-span-2">

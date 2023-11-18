@@ -5,6 +5,7 @@
   import { cubicOut } from 'svelte/easing';
   import WorkSheetListItem from '$lib/components/Worksheet/WorkSheetListItem.svelte';
   import WorkSheetTotals from '$lib/components/Worksheet/WorkSheetTotals.svelte';
+  import { appSettings } from '$lib/stores/appSettings';
 
   export let closeDrawer: () => void;
 
@@ -19,9 +20,9 @@
 
 <div class="flex flex-col rounded-lg p-6 bg-base-100 md:bg-base-100/70 md:w-[450px]">
   <div class="flex items-center justify-between pb-4">
-    <h2 class="text-2xl">Worksheet</h2>
+    <h2 class="text-2xl">{$appSettings.store.worksheet_name}</h2>
     <button
-      title="Clear Worksheet"
+      title="Clear {$appSettings.store.worksheet_name}"
       class="btn btn-ghost flex items-center gap-0 p-1 pl-2 group rounded cursor-pointer drop-shadow-2xl"
       on:click={onClearItems}
     >

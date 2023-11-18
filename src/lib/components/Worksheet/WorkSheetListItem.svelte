@@ -50,7 +50,7 @@
     </span>
   </span>
   <span class="flex-grow text-right">{priceFormatter.format(item.part?.cost * item.quantity)}</span>
-  <button title="Remove {item.part?.name} from worksheet" on:click={() => removeItem(item.part?.id)}>
+  <button title="Remove {item.part?.name} from {$appSettings.store.worksheet_name}" on:click={() => removeItem(item.part?.id)}>
     <Icon src={Trash} size="24" class="w-0 cursor-pointer group-hover:w-6 transition-all duration-150 ease-in-out pointer-events-none" />
   </button>
 </div>

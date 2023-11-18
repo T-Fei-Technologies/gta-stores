@@ -137,7 +137,7 @@
   <form method="dialog" class="modal-box">
     <h3 class="font-bold text-lg">Confirm Remove Part</h3>
     <p class="py-4">Are you sure you want to remove the part '{partToDelete?.name}'?</p>
-    <p>This will also remove if from the worksheet if it is on it.</p>
+    <p>This will also remove if from the {$appSettings.store.worksheet_name} if it is on it.</p>
     <p class="font-bold text-warning">There's no going back from this!</p>
     <div class="modal-action">
       <!-- if there is a button in form, it will close the modal -->

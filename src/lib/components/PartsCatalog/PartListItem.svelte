@@ -5,6 +5,7 @@
 
   import type { Part } from '$lib/types/Part';
   import { items } from '$lib/stores/items';
+  import { appSettings } from '$lib/stores/appSettings';
 
   export let part: Part;
   export let onAddItem: (part: Part, quantity?: number) => void;
@@ -24,7 +25,7 @@
   <button
     class="group flex items-center justify-between w-full gap-4 my-4 p-2 max-sm:hidden rounded cursor-pointer outline outline-0 hover:outline-2 hover:outline-offset-2 hover:outline-accent hover:text-accent"
     on:click={() => onAddItem(part)}
-    title="Add {part.name} to worksheet"
+    title="Add {part.name} to {$appSettings.store.worksheet_name}"
   >
     <Icon src={Plus} size="24" class="w-0 group-hover:w-6 transition-all duration-150 ease-in-out" />
     <span class="text-left">
