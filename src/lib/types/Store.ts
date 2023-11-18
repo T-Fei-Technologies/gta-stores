@@ -11,4 +11,6 @@ export type Store = {
   worksheet_name: string;
   markup_name: string;
   billing_key: string;
+  has_delivery: boolean;
+  delivery_fee: number;
 };

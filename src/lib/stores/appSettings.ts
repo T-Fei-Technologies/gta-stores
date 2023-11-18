@@ -15,6 +15,8 @@ export const appSettings = writable<AppSettings>({
     worksheet_name: '',
     markup_name:    '',
     billing_key:    '',
+    has_delivery:   false,
+    delivery_fee:   0,
   },
   categories: [],
   subCategories: [],

@@ -10,6 +10,8 @@
   export let magicNumber = '';
   export let label = '';
 
+  let isDelivery = false;
+
   const applyDiscount = (event: Event) => {
     $appSettings.discount = Math.max(Math.min(Number(event.target?.value), 100), 0);
   };
@@ -38,7 +40,7 @@
   $: subTotal = categoryMarkups.reduce((acc, markup, index) => acc + markup + categoryTotals[index], 0);
 
   $: discount = (subTotal * $appSettings.discount / 100);
-  $: totalCost = Math.max(subTotal - discount, 0);
+  $: totalCost = Math.max(subTotal - discount + (isDelivery ? $appSettings.store.delivery_fee : 0), 0);
 
   $: billingCommand = '/billing '
                       + `${magicNumber && magicNumber.trim() !== '' ? magicNumber : '[special number]'} `
@@ -84,6 +86,28 @@
     </div>
     <span class="flex items-center justify-end text-right">{priceFormatter.format(discount)}</span>
 </div>
+
+{#if $appSettings.store.has_delivery}
+  <div class="grid grid-cols-3 w-full m-4 mb-0 mr-0 text-right">
+    <div class="flex items-center justify-end col-span-2">
+      <label for="delivery" class="flex items-center text-right">
+        <input
+          type="checkbox"
+          id="delivery"
+          class="checkbox rounded-lg mr-4"
+          bind:checked={isDelivery}
+        />
+        Delivery
+        {#if $appSettings.store.delivery_fee > 0}
+          &nbsp;Fee ({priceFormatter.format($appSettings.store.delivery_fee)})
+        {/if}
+      </label>
+    </div>
+    <span class="flex items-center justify-end text-right">
+      {priceFormatter.format(isDelivery ? $appSettings.store.delivery_fee : 0)}
+    </span>
+  </div>
+{/if}
 <div class="divider"></div>
 <div class="grid grid-cols-3 w-full mr-0 text-right">
   <span class="text-2xl col-span-2 text-right">Total</span>

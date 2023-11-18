@@ -5,8 +5,13 @@ export const changelog: WhatsNew[] = [
     version:  '2.1.0',
     title:    `Multi-Store Support`,
     features: [
-      `Changes to support multiple stores driven by the DB and environment variables`,
+      `Changes to support multiple stores driven by the DB and environment variables. Merged several stores together`
+      + `into a single codebase. Will try to include merged features here, but may miss some`,
+      `Delivery fees now available to stores. Delivery fee is a flat fee per order, not per item`,
     ],
+    other: [
+      `Management page still disabled while I rework it to support the new database-driven system`,
+    ]
   },
   {
     version:  '2.0.0',
@@ -61,7 +66,7 @@ export const changelog: WhatsNew[] = [
     version: '1.0.0',
     title: `It's Official`,
     other: [
-      `Welcome Drift Devil Mechanics!`,
+      `Welcome to the GTA Stores App!`,
     ],
   },
 ]
