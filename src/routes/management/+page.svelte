@@ -1,11 +1,11 @@
 <script lang="ts">
   import Management from '$lib/components/Settings/Management.svelte';
   import { ArrowLeft, Icon } from 'svelte-hero-icons';
-  import { theme } from '$lib/stores/theme';
+  import { appSettings } from '$lib/stores/appSettings';
 </script>
 
 <svelte:head>
-  <title>Management | {$theme.name}</title>
+  <title>Management | {$appSettings.store.name}</title>
 </svelte:head>
 
 <section class="flex flex-col min-w-full min-h-screen rounded-lg bg-primary/70 text-primary-content p-8">
