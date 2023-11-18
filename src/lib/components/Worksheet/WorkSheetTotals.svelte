@@ -54,7 +54,10 @@
 {#each categoryMarkups as markup, index}
   {#if markup > 0}
     <div class="grid grid-cols-3 w-full text-right">
-      <span class="col-span-2 capitalize">{$appSettings.categories[index].name} Markup ({$appSettings.markup[$appSettings.categories[index].id]}&percnt;)</span>
+      <span class="col-span-2 capitalize">
+        {$appSettings.categories[index].name} {$appSettings.store.markup_name ?? 'Markup'}
+        &nbsp;({$appSettings.markup[$appSettings.categories[index].id]}&percnt;)
+      </span>
       <span>{priceFormatter.format(markup)}</span>
     </div>
   {/if}
