@@ -5,7 +5,7 @@ export const changelog: WhatsNew[] = [
     version:  '2.1.0',
     title:    `Multi-Store Support`,
     features: [
-      `Changes to support multiple stores driven by the DB and environment variables. Merged several stores together`
+      `Changes to support multiple stores driven by the DB and environment variables. Merged several stores together `
       + `into a single codebase. Will try to include merged features here, but may miss some`,
       `Delivery fees now available to stores. Delivery fee is a flat fee per order, not per item`,
     ],

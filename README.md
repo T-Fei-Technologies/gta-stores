@@ -24,10 +24,10 @@ This readme is pretty informal as this wasn't meant to be some complex project, 
 
 ### Tech Info
 Here is the tech I used at-a-glance
-- Svelte 4.2.1 / SvelteKit 1.25.1
+- Svelte 4.2.7 / SvelteKit 1.27.6
 - Typescript 5.0.0
-- TailwindCSS 3.3.3
-- DaisyUI 3.9.2
+- TailwindCSS 3.3.5
+- DaisyUI 4.4.6
 - Svelte Hero Icons 5.0.0
 - Theme Change 2.5.0
 
