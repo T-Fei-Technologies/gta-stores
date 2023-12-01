@@ -5,7 +5,7 @@
 Drift Devils Mechanic's Pricing Sheet
 Live at: https://pricing-sheet.driftdevilsmechanics.com/
 
-Made for some of my mechanic friends on the Stellar Roleplay GTA Five-M server, 4M is a quick and handy worksheet for mechanics to use for calculate charges when doing repairs/upgrades.
+Initially made for some of my mechanic friends on the [Stellar Roleplay](https://www.stellargaming.gg) GTA Five-M server, gta-stores is a quick and handy worksheet for mechanics to use for calculate charges when doing repairs/upgrades.
 Now it supports stores in general and not just mechanics.
 An easy way to keep a running total for big orders or if you just hate mathing things.
 
@@ -19,8 +19,14 @@ This readme is pretty informal as this wasn't meant to be some complex project, 
 - A handy "Clear Worksheet" button to clear the worksheet and start fresh and quickly on your next job
 - It's a Progressive Web App (PWA), so it can be installed on mobile devices as well as used offline
 
+### Known Issues
+- I broke the Management Page. Since migrating from storing prices/data in a JSON file to living in a database, I am still updating the Management side to be able to edit a much greater array of customizations
+
 ### Roadmap
-- Nothing at the moment. With usage and feedback it may change, but I'm not planning on adding anything else currently
+- Finish the Management Page
+- Possibly add a "customer-facing" version for online ordering. Will probably link to like a Discord Bot that can post orders to a Discord channel
+- Add user login/registration for future features
+- Add Employee Management features such as clocking in/out, tracking hours, etc.
 
 ### Tech Info
 Here is the tech I used at-a-glance
@@ -29,9 +35,8 @@ Here is the tech I used at-a-glance
 - TailwindCSS 3.3.5
 - DaisyUI 4.4.6
 - Svelte Hero Icons 5.0.0
-- Theme Change 2.5.0
-
-All data from app settings is saved to local storage, so it will persist between sessions, but not if the user clears their cache.
+- Theme Change 2.5.0 (Might remove as it doesn't seem like it'll get much use after all)
 
 ### Running Locally
-It's a straight-up SvelteKit out-of-the-box app, so just clone the repo, run `npm install` and `npm run dev` to get it running locally.
+It's a straight-up SvelteKit out-of-the-box app, so just clone the repo, run `npm install` and `npm run dev` to get it running locally or your flavor of package management.
+I'm using pnpm myself.
