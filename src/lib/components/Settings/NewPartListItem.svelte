@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Part } from '$lib/types/Part';
-  import { Icon, Plus } from 'svelte-hero-icons';
+  import { Icon } from '@steeze-ui/svelte-icon';
+  import { Plus } from '@steeze-ui/heroicons';
 
   export let onAddPart: (part: Part) => void;
   export let index: number;

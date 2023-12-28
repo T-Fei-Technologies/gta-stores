@@ -1,6 +1,7 @@
 <script lang="ts">
   import { fly } from 'svelte/transition';
-  import { Plus, Icon } from 'svelte-hero-icons';
+  import { Icon } from '@steeze-ui/svelte-icon';
+  import { Plus } from '@steeze-ui/heroicons';
   import { priceFormatter } from '$lib/utils/priceFormatter';
 
   import type { Part } from '$lib/types/Part';

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { fly, fade } from 'svelte/transition';
-  import { Icon, Trash, XMark } from 'svelte-hero-icons';
+  import { Icon } from '@steeze-ui/svelte-icon';
+  import { Trash, XMark } from '@steeze-ui/heroicons';
   import { items } from '$lib/stores/items';
   import { cubicOut } from 'svelte/easing';
   import WorkSheetListItem from '$lib/components/Worksheet/WorkSheetListItem.svelte';

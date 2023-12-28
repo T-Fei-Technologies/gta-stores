@@ -1,6 +1,7 @@
 <script lang="ts">
   import Management from '$lib/components/Settings/Management.svelte';
-  import { ArrowLeft, Icon } from 'svelte-hero-icons';
+  import { Icon } from '@steeze-ui/svelte-icon';
+  import { ArrowLeft } from '@steeze-ui/heroicons';
   import { appSettings } from '$lib/stores/appSettings';
 </script>
 

@@ -1,7 +1,8 @@
 <script lang="ts">
   import { fade, fly } from 'svelte/transition';
   import type { Part } from '$lib/types/Part';
-  import { Icon, Trash } from 'svelte-hero-icons';
+  import { Icon } from '@steeze-ui/svelte-icon';
+  import { Trash } from '@steeze-ui/heroicons';
   import { debounceEvent } from '$lib/utils/debounceEvent';
   import { SETTINGS_DEBOUNCE_MS } from '$lib/consts/eventDebounces';
 

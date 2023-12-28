@@ -2,10 +2,8 @@
   import { priceFormatter } from '$lib/utils/priceFormatter';
   import { items } from '$lib/stores/items';
   import { appSettings } from '$lib/stores/appSettings';
-  import {
-    DocumentDuplicate,
-    Icon,
-  } from 'svelte-hero-icons';
+  import { Icon } from '@steeze-ui/svelte-icon';
+  import { DocumentDuplicate } from '@steeze-ui/heroicons';
 
   export let magicNumber = '';
   export let label = '';

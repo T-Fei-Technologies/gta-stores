@@ -2,7 +2,8 @@
 	import { fly } from 'svelte/transition';
 	import PartsCatalog from '$lib/components/PartsCatalog/PartsCatalog.svelte';
 	import Worksheet from '$lib/components/Worksheet/Worksheet.svelte';
-	import { ShoppingCart, Icon } from 'svelte-hero-icons';
+	import { Icon } from '@steeze-ui/svelte-icon';
+	import { ShoppingCart } from '@steeze-ui/heroicons';
 	import { getItemCount } from '$lib/utils/getItemCount';
 	import { items } from '$lib/stores/items';
 	import { appSettings } from '$lib/stores/appSettings';

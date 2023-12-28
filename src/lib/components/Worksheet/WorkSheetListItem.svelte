@@ -1,7 +1,8 @@
 <script lang="ts">
   import { fly } from 'svelte/transition';
   import { cubicOut } from 'svelte/easing';
-  import { Trash, Icon } from 'svelte-hero-icons';
+  import { Icon } from '@steeze-ui/svelte-icon';
+  import { Trash } from '@steeze-ui/heroicons';
   import { priceFormatter } from '$lib/utils/priceFormatter';
   import type { WorksheetItem } from '$lib/types/WorksheetItem';
   import { items } from '$lib/stores/items';
