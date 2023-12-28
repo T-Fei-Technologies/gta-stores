@@ -32,7 +32,7 @@ export default {
         koi: {
           "primary": "#b21d23",
           "secondary": "#efdada",
-          "accent": "#111111",
+          "accent": "#d9bba9",
           "neutral": "#111827",
           "base-100": "#371F1F",
           "info": "#3ABFF8",
