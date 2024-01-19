@@ -28,7 +28,7 @@
 
   $: subTotal = categoryMarkups.reduce((acc, markup, index) => acc + markup + categoryTotals[index], 0) + customTotal;
   $: discount = (subTotal * $appSettings.discount / 100);
-  $: totalCost = Math.max(subTotal + customTotal - discount + (isDelivery ? $appSettings.store.delivery_fee : 0), 0);
+  $: totalCost = Math.max(subTotal - discount + (isDelivery ? $appSettings.store.delivery_fee : 0), 0);
 </script>
 
 <div class="divider"></div>
