@@ -30,11 +30,11 @@ This readme is pretty informal as this wasn't meant to be some complex project, 
 
 ### Tech Info
 Here is the tech I used at-a-glance
-- Svelte 4.2.8 / SvelteKit 2.0.6
+- Svelte 4.2.9 / SvelteKit 2.4.0
 - Typescript 5.3.3
-- TailwindCSS 3.4.0
-- DaisyUI 4.4.24
-- Steeze UI HeroIcons 2.2.3
+- TailwindCSS 3.4.1
+- DaisyUI 4.6.0
+- Steeze UI HeroIcons 2.3.0
 
 ### Running Locally
 It's a straight-up SvelteKit out-of-the-box app, so just clone the repo, run `npm install` and `npm run dev` to get it running locally or your flavor of package management.

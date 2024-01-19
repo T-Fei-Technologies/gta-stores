@@ -11,7 +11,6 @@
   export let closeDrawer: () => void;
 
   let magicNumber = '';
-  let label = '';
 
   const onClearItems = () => {
     items.set([]);
