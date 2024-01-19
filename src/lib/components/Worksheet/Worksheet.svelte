@@ -41,12 +41,6 @@
       </label>
       <input type="text" id="magic-number" class="input input-bordered mb-2" placeholder="Customer's Magic Number" bind:value={magicNumber} />
     </div>
-    <div class="form-control">
-      <label class="label" for="label">
-        <span class="label-text">Mech Name</span>
-      </label>
-      <input type="text" id="label" class="input input-bordered mb-2" placeholder="This appears on the billing" bind:value={label} />
-    </div>
     <div class="flex flex-col flex-grow">
       <div class="divider">Items</div>
       <div class="p-2 flex-grow overflow-y-hidden overflow-x-hidden">
@@ -65,7 +59,7 @@
       </div>
     </div>
     <div class="flex flex-col items-end">
-      <WorkSheetTotals {magicNumber} {label} />
+      <WorkSheetTotals />
     </div>
   </div>
   <label for="mobile-drawer" class="btn btn-outline btn-accent self-end sm:hidden hover:text-accent">

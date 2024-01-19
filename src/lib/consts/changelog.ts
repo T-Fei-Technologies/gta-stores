@@ -2,6 +2,16 @@ import type { WhatsNew } from '$lib/types/WhatsNew';
 
 export const changelog: WhatsNew[] = [
   {
+    version:  '2.1.1',
+    title:    `Custom Amount and Removed Billing Command`,
+    features: [
+      `Added ability to enter a custom amount (such as for vehicle customization and a markup amount`,
+    ],
+    other: [
+      `Removed Special Label and Billing Command Copy to Clipboard. They are no longer useable`,
+    ]
+  },
+  {
     version:  '2.1.0',
     title:    `Multi-Store Support`,
     features: [

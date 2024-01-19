@@ -2,24 +2,13 @@
   import { priceFormatter } from '$lib/utils/priceFormatter';
   import { items } from '$lib/stores/items';
   import { appSettings } from '$lib/stores/appSettings';
-  import { Icon } from '@steeze-ui/svelte-icon';
-  import { DocumentDuplicate } from '@steeze-ui/heroicons';
-
-  export let magicNumber = '';
-  export let label = '';
 
   let isDelivery = false;
+  let customAmount = 0;
+  let customMarkup = 0;
 
   const applyDiscount = (event: Event) => {
     $appSettings.discount = Math.max(Math.min(Number(event.target?.value), 100), 0);
-  };
-
-  const copyToClipboard = async (event: Event) => {
-    await navigator.clipboard.writeText(billingCommand);
-
-    const tooltip = event.target?.closest('.tooltip-success');
-    tooltip.classList.add('tooltip', 'tooltip-open');
-    setTimeout(() => tooltip.classList.remove('tooltip', 'tooltip-open'), 2000);
   };
 
   $: baseTotal = $items.reduce((acc, item) => acc + item.part.cost * item.quantity, 0);
@@ -35,14 +24,12 @@
     return total * (markup / 100);
   });
 
-  $: subTotal = categoryMarkups.reduce((acc, markup, index) => acc + markup + categoryTotals[index], 0);
+  $: customMarkupAmount = customAmount * (customMarkup / 100);
+  $: customTotal = customAmount + customMarkupAmount;
 
+  $: subTotal = categoryMarkups.reduce((acc, markup, index) => acc + markup + categoryTotals[index], 0) + customTotal;
   $: discount = (subTotal * $appSettings.discount / 100);
-  $: totalCost = Math.max(subTotal - discount + (isDelivery ? $appSettings.store.delivery_fee : 0), 0);
-
-  $: billingCommand = '/billing '
-                      + `${magicNumber && magicNumber.trim() !== '' ? magicNumber : '[special number]'} `
-                      + `${totalCost} ${label && label.trim() !== '' ? label : $appSettings.store.billing_key}`;
+  $: totalCost = Math.max(subTotal + customTotal - discount + (isDelivery ? $appSettings.store.delivery_fee : 0), 0);
 </script>
 
 <div class="divider"></div>
@@ -63,6 +50,35 @@
   {/if}
 {/each}
 
+<div class="grid grid-cols-3 items-center w-full m-4 mb-0 mr-0 text-right">
+  <span class="text-right">Custom Amount</span>
+  <div class="flex flex-cols justify-end items-center col-span-2">
+    <span class="pointer-events-none">$</span>
+    <input
+      type="number"
+      id="discount"
+      class="input input-bordered rounded-lg ml-4 w-32 text-right"
+      bind:value={customAmount}
+    />
+  </div>
+</div>
+
+<div class="grid grid-cols-3 w-full m-4 mb-0 mr-0 text-right">
+  <div class="col-span-2">
+    <span class="text-right">Custom {$appSettings.store.markup_name ?? 'Markup'}</span>
+    <input
+      type="number"
+      id="discount"
+      class="input input-bordered rounded-lg w-20 text-right"
+      bind:value={customMarkup}
+    />
+    <span class="pointer-events-none">%</span>
+  </div>
+  <span class="flex items-center justify-end text-right">{priceFormatter.format(customTotal)}</span>
+</div>
+
+<div class="divider"></div>
+
 {#if categoryMarkups.some(markup => markup > 0)}
   <div class="grid grid-cols-3 w-full text-right text-lg mt-2">
     <span class="col-span-2">Sub-Total</span>
@@ -71,18 +87,18 @@
 {/if}
 
 <div class="grid grid-cols-3 w-full m-4 mb-0 mr-0 text-right">
-    <div class="col-span-2">
-      <span class="text-right">Discount</span>
-      <input
-        type="number"
-        id="discount"
-        class="input input-bordered rounded-lg w-20 text-right"
-        value={$appSettings.discount}
-        on:input={applyDiscount}
-      />
-      <span class="pointer-events-none">%</span>
-    </div>
-    <span class="flex items-center justify-end text-right">{priceFormatter.format(discount)}</span>
+  <div class="col-span-2">
+    <span class="text-right">Discount</span>
+    <input
+      type="number"
+      id="discount"
+      class="input input-bordered rounded-lg w-20 text-right"
+      value={$appSettings.discount}
+      on:input={applyDiscount}
+    />
+    <span class="pointer-events-none">%</span>
+  </div>
+  <span class="flex items-center justify-end text-right">{priceFormatter.format(discount)}</span>
 </div>
 
 {#if $appSettings.store.has_delivery}
@@ -106,22 +122,10 @@
     </span>
   </div>
 {/if}
+
 <div class="divider"></div>
+
 <div class="grid grid-cols-3 w-full mr-0 text-right">
   <span class="text-2xl col-span-2 text-right">Total</span>
   <span class="text-right text-2xl">{priceFormatter.format(totalCost)}</span>
-</div>
-
-<div class="grid-cols-3 w-full mt-4 form-control">
-  <div>
-    <span class="label-text">Billing</span>
-  </div>
-  <div class="join">
-    <span class="flex items-center input input-bordered join-item w-full">{billingCommand}</span>
-    <div class="tooltip-success" data-tip="Copied to clipboard!">
-      <button type="button" class="btn btn-accent btn-outline join-item" on:click={copyToClipboard}>
-        <Icon src={DocumentDuplicate} size="28" />
-      </button>
-    </div>
-  </div>
 </div>
