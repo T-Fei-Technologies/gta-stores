@@ -64,7 +64,7 @@
     Custom {$appSettings.store.markup_name ?? 'Markup'}
      ({$appSettings.store.custom_markup}%)
   </span>
-  <span class="flex items-center justify-end text-right">{priceFormatter.format(customTotal)}</span>
+  <span class="flex items-center justify-end text-right">{priceFormatter.format(customMarkupAmount)}</span>
 </div>
 
 <div class="divider"></div>
