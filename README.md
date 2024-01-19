@@ -5,6 +5,8 @@
 Drift Devils Mechanic's Pricing Sheet
 Live at: https://pricing-sheet.driftdevilsmechanics.com/
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/56b1677d-c9a8-4f45-9fdf-ee1158034c2e/deploy-status)](https://app.netlify.com/sites/courageous-cuchufli-8f0ec0/deploys)
+
 Initially made for some of my mechanic friends on the [Stellar Roleplay](https://www.stellargaming.gg) GTA Five-M server, gta-stores is a quick and handy worksheet for mechanics to use for calculate charges when doing repairs/upgrades.
 Now it supports stores in general and not just mechanics.
 An easy way to keep a running total for big orders or if you just hate mathing things.
