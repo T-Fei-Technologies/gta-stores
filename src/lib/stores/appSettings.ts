@@ -14,6 +14,7 @@ export const appSettings = writable<AppSettings>({
     products_name:  '',
     worksheet_name: '',
     markup_name:    '',
+    custom_markup:  0,
     billing_key:    '',
     has_delivery:   false,
     delivery_fee:   0,

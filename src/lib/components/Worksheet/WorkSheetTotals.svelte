@@ -5,7 +5,6 @@
 
   let isDelivery = false;
   let customAmount = 0;
-  let customMarkup = 0;
 
   const applyDiscount = (event: Event) => {
     $appSettings.discount = Math.max(Math.min(Number(event.target?.value), 100), 0);
@@ -24,7 +23,7 @@
     return total * (markup / 100);
   });
 
-  $: customMarkupAmount = customAmount * (customMarkup / 100);
+  $: customMarkupAmount = customAmount * ($appSettings.store.custom_markup / 100);
   $: customTotal = customAmount + customMarkupAmount;
 
   $: subTotal = categoryMarkups.reduce((acc, markup, index) => acc + markup + categoryTotals[index], 0) + customTotal;
@@ -51,29 +50,20 @@
 {/each}
 
 <div class="grid grid-cols-3 items-center w-full m-4 mb-0 mr-0 text-right">
-  <span class="text-right">Custom Amount</span>
-  <div class="flex flex-cols justify-end items-center col-span-2">
-    <span class="pointer-events-none">$</span>
-    <input
-      type="number"
-      id="discount"
-      class="input input-bordered rounded-lg ml-4 w-32 text-right"
-      bind:value={customAmount}
-    />
-  </div>
+  <span class="text-right col-span-2">Custom Amount $</span>
+  <input
+    type="number"
+    id="discount"
+    class="input input-bordered rounded-lg ml-4 w-32 text-right"
+    bind:value={customAmount}
+  />
 </div>
 
 <div class="grid grid-cols-3 w-full m-4 mb-0 mr-0 text-right">
-  <div class="col-span-2">
-    <span class="text-right">Custom {$appSettings.store.markup_name ?? 'Markup'}</span>
-    <input
-      type="number"
-      id="discount"
-      class="input input-bordered rounded-lg w-20 text-right"
-      bind:value={customMarkup}
-    />
-    <span class="pointer-events-none">%</span>
-  </div>
+  <span class="col-span-2 capitalize">
+    Custom {$appSettings.store.markup_name ?? 'Markup'}
+     ({$appSettings.store.custom_markup}%)
+  </span>
   <span class="flex items-center justify-end text-right">{priceFormatter.format(customTotal)}</span>
 </div>
 

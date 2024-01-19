@@ -10,6 +10,7 @@ export type Store = {
   products_name: string;
   worksheet_name: string;
   markup_name: string;
+  custom_markup: number;
   billing_key: string;
   has_delivery: boolean;
   delivery_fee: number;
