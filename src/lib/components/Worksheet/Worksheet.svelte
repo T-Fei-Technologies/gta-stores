@@ -18,7 +18,7 @@
   };
 </script>
 
-<div class="flex flex-col rounded-lg p-6 bg-base-100 md:bg-base-100/70 md:w-[450px]">
+<div class="flex flex-col rounded-lg p-2 md:p-6 bg-base-100 md:bg-base-100/70 w-full md:w-[450px]">
   <div class="flex items-center justify-between pb-4">
     <h2 class="text-2xl">{$appSettings.store.worksheet_name}</h2>
     <button
@@ -57,7 +57,7 @@
         {/if}
       </div>
     </div>
-    <div class="flex flex-col items-end">
+    <div class="flex flex-col items-end w-fit">
       <WorkSheetTotals />
     </div>
   </div>

@@ -57,6 +57,3 @@
 		</picture>
 	{/if}
 </div>
-
-<style>
-</style>

@@ -23,7 +23,7 @@
 >
 	<Header />
 
-	<main class="flex items-center justify-center flex-grow p-4 w-full max-w-5xl mx-auto">
+	<main class="flex items-center justify-center flex-grow p-4 max-w-min sm:max-w-5xl mx-auto">
 		<slot />
 	</main>
 

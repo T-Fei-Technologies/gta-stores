@@ -32,7 +32,7 @@
 </script>
 
 <div class="divider"></div>
-<div class="grid grid-cols-3 w-full text-right text-lg mb-2">
+<div class="grid grid-cols-3 w-full text-right sm:text-lg mb-2">
   <span class="col-span-2">Base Total</span>
   <span class="text-right">{priceFormatter.format(baseTotal)}</span>
 </div>
@@ -54,7 +54,7 @@
   <input
     type="number"
     id="discount"
-    class="input input-bordered rounded-lg ml-4 w-32 text-right"
+    class="input input-bordered rounded-lg ml-4 sm:w-32 text-right"
     bind:value={customAmount}
   />
 </div>
@@ -70,7 +70,7 @@
 <div class="divider"></div>
 
 {#if categoryMarkups.some(markup => markup > 0)}
-  <div class="grid grid-cols-3 w-full text-right text-lg mt-2">
+  <div class="grid grid-cols-3 w-full text-right sm:text-lg mt-2">
     <span class="col-span-2">Sub-Total</span>
     <span>{priceFormatter.format(subTotal)}</span>
   </div>
@@ -115,7 +115,7 @@
 
 <div class="divider"></div>
 
-<div class="grid grid-cols-3 w-full mr-0 text-right">
-  <span class="text-2xl col-span-2 text-right">Total</span>
-  <span class="text-right text-2xl">{priceFormatter.format(totalCost)}</span>
+<div class="grid grid-cols-3 w-full mr-0 text-right text-xl md:text-2xl">
+  <span class="col-span-2 text-right">Total</span>
+  <span class="text-right">{priceFormatter.format(totalCost)}</span>
 </div>
