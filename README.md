@@ -37,6 +37,7 @@ Here is the tech I used at-a-glance
 - TailwindCSS 3.4.1
 - DaisyUI 4.6.0
 - Steeze UI HeroIcons 2.3.0
+- DB: Pocketbase hosted on Pockethost.io
 
 ### Running Locally
 It's a straight-up SvelteKit out-of-the-box app, so just clone the repo, run `npm install` and `npm run dev` to get it running locally or your flavor of package management.
