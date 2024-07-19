@@ -1,0 +1,22 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = crlf
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+max_line_length = 120
+tab_width = 2
+
+[{*.ats,*.cts,*.mts,*.ts}]
+indent_style = tab
+
+[{*.cjs,*.js}]
+indent_style = tab
+
+[{*.graphqlconfig,*.graphqlrc,*.har,*.jsb2,*.jsb3,*.json,*.jsonc,*.postman_collection,*.postman_environment,.babelrc,.eslintrc,.prettierrc,.stylelintrc,.ws-context,bowerrc,jest.config}]
+tab_width = 4
+
+[{*.htm,*.html,*.sht,*.shtm,*.shtml}]
+indent_style = tab
